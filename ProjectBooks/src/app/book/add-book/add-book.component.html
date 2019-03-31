@@ -1,0 +1,42 @@
+<div  class="row align-items-center form_sign justify-content-center">
+    <div class="col-8 align-self-center">
+      <mat-card>
+        <mat-card-title>Ajouter un livre</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()" fxLayout='column'>
+            <mat-form-field>
+                {{title_already_use}}
+              <input matInput type="text" formControlName="titre" placeholder="Titre de votre livre">
+            </mat-form-field>
+  
+            <mat-form-field>
+                <textarea matInput  type="text" formControlName="resume" placeholder="Résumé de votre livre"></textarea>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <input matInput type="text" formControlName="note" placeholder="note sur 10 ( multiple 0.5 seulement) ">
+            </mat-form-field>
+
+            <div formArrayName="categories">
+                <div  *ngFor="let categorieControl of getCategories().controls; let i = index">
+                  <!-- <mat-form-field>
+
+                    <input matInput placeholder="Catégorie" type="text"  [formControlName]="i">
+                </mat-form-field> -->
+                <mat-form-field>
+                    <mat-label>categorie</mat-label>
+                  <select matNativeControl [formControlName]="i" >
+                    <option *ngFor="let categorie of categories | async" [value]="categorie.label" >{{categorie.label}}</option>
+                  </select>
+                </mat-form-field>
+                </div>
+                <button mat-raised-button color="primary" type="button"  (click)="onAddCategory()">Ajouter Catégorie</button>
+            </div>
+  
+            <button [disabled]="addBookForm.invalid" mat-raised-button color="primary" type="submit">Ajouter le livre</button>
+  
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

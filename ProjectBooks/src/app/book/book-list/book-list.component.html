@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Titre</th>
+      <th scope="col">categorie</th>
+      <th scope="col">note</th>
+      <th scope='col'>resume</th>
+      <th scope='col'>action</th>
+      <th scope='col'>action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books | async ">
+      <td>{{book.titre}}</td>
+      <td> {{book.categories}}</td>
+      <td>{{book.note}}</td>
+      <td>{{book.resume}}</td>
+      <td><button mat-raised-button color="primary" type="button"  (click)="onEdit(book._id)">Editer</button></td>
+      <td><button mat-raised-button color="primary" type="button"  (click)="onRemove(book._id)">Supprimer</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<a routerLink="/addbook"><button mat-raised-button color="primary" type="button" >Ajouter un livre</button></a>

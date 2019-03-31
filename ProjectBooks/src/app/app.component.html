@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-toolbar color="primary">
+<mat-toolbar-row>
+  <span>Books Project</span>
+  <div *ngIf="jwtToken.isAuthenticated">
+      <a class="espace-left" routerLink="books">Books</a>
+      <a class="espace-left" routerLink="categories">Categories</a>
+  </div> 
+  <span class="example-spacer"></span>
+  <div *ngIf="!jwtToken.isAuthenticated">
+    <a class="espace-right" routerLink="signin">Connexion</a>
+    <a routerLink="signup">Inscription</a>
+  </div>
+  <div *ngIf="jwtToken.isAuthenticated">
+      <a (click)="onLogOut()">Deconnexion</a>
+  </div>  
+</mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+

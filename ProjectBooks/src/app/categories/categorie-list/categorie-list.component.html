@@ -1,0 +1,17 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Categorie</th>
+      <th scope='col'>action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let categorie of categories | async ">
+      <td>{{categorie.label}}</td>
+      <td><button mat-raised-button color="primary" type="button"  (click)="onRemove(categorie._id)">Supprimer</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<a routerLink="/addcategorie"><button mat-raised-button color="primary" type="button" >Ajouter une categorie</button></a>
